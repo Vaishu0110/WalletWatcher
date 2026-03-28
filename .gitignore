@@ -1,0 +1,36 @@
+# Logs
+frontend/WalletWatcher/logs
+*frontend/WalletWatcher/.log
+frontend/WalletWatcher/npm-debug.log*
+frontend/WalletWatcher/yarn-debug.log*
+frontend/WalletWatcher/yarn-error.log*
+frontend/WalletWatcher/pnpm-debug.log*
+frontend/WalletWatcher/lerna-debug.log*
+
+frontend/WalletWatcher/node_modules
+frontend/WalletWatcher/dist
+frontend/WalletWatcher/dist-ssr
+*frontend/WalletWatcher/.local
+*.local
+dist
+
+# Editor directories and files
+.vscode/*
+frontend/WalletWatcher/.vscode
+!.vscode/extensions.json
+.idea
+frontend/WalletWatcher/.idea
+.DS_Store
+frontend/WalletWatcher/.DS_Store
+*.suo
+*frontend/WalletWatcher/.suo
+*.ntvs*
+*frontend/WalletWatcher/.ntvs*
+*.njsproj
+*frontend/WalletWatcher/.njsproj
+*.sln
+*frontend/WalletWatcher/.sln
+*.sw?
+*frontend/WalletWatcher/.sw?
+
+frontend/WalletWatcher/bak.gitignorebak
