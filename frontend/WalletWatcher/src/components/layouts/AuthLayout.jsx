@@ -5,7 +5,7 @@ import { IoWallet } from "react-icons/io5";
 
 const AuthLayout = ({children}) => {
     return <div className = "flex">
-        <div className = "w-screen h-screen md:w-[60vw] px-20 pt-8 pb-40">
+        <div className = "w-screen h-screen md:w-[60vw] px-20 pt-8 pb-20">
             <div className="flex items-center gap-2">
                 <IoWallet className="text-3xl md:text-4xl text-primary" />
                 <h1 className="text-xl md:text-2xl font-bold text-gray-800">

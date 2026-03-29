@@ -50,13 +50,13 @@ const Login = () => {
                         value = {password}
                         onChange = {({target}) => setPassword(target.value)}
                         label={<span className="font-semibold">Password</span>}
-                        placeholder = "Min. 8 Characters"
+                        placeholder = ""
                         type = "password"
                     />
 
                     {error && <p className = "text-red-500 text-xs pb-2.5">{error}</p>}
 
-                    <button type = "submit" className = "btn-primary">
+                    <button type = "submit" className = "btn-primary cursor-pointer">
                         Login
                     </button>
 
