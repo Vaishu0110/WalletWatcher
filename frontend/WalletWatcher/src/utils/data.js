@@ -5,6 +5,8 @@ import {
     LuLogOut,
 } from "react-icons/lu";
 
+import {TbPigMoney} from "react-icons/tb";
+
 export const SIDE_MENU_DATA = [
     {
         id: "01",
@@ -15,7 +17,7 @@ export const SIDE_MENU_DATA = [
     {
         id: "02",
         label: "Income",
-        icon: LuWalletMinimal,
+        icon: TbPigMoney,
         path: "/income",
     },
     {

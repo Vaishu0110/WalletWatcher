@@ -5,8 +5,12 @@ import {useNavigate} from "react-router-dom";
 import {API_PATHS} from "../../utils/apiPaths";
 import axiosInstance from "../../utils/axiosInstance";
 import InfoCard from "../../components/Cards/InfoCard";
-import {LuHandCoins, LuWalletMinimal} from "react-icons/lu";
+import RecentTransactions from "../../components/Dashboard/RecentTransactions";
+import {LuHandCoins} from "react-icons/lu";
+import {TbPigMoney} from "react-icons/tb";
 import {IoMdCard} from "react-icons/io";
+import {addThousandsSeparator} from "../../utils/helper";
+import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 
 const Home = () => {
     useUserAuth();
@@ -44,14 +48,41 @@ const Home = () => {
     return (
         <DashboardLayout activeMenu = "Dashboard">
             <div className = "my-5 mx-auto">
-                <div className = "grid grid-cols-1 md: grid-cols-3 gap-6">
+                <div className = "grid grid-cols-1 md:grid-cols-3 gap-6">
                     <InfoCard
                         icon = {<IoMdCard/>}
                         label = "Total Balance"
                         value = {addThousandsSeparator(dashboardData?.totalBalance || 0)}
                         color = "bg-primary"
                     />
+
+                    <InfoCard
+                        icon = {<TbPigMoney/>}
+                        label = "Total Income"
+                        value = {addThousandsSeparator(dashboardData?.totalIncome || 0)}
+                        color = "bg-green-500"
+                    />
+
+                    <InfoCard
+                        icon = {<LuHandCoins/>}
+                        label = "Total Expense"
+                        value = {addThousandsSeparator(dashboardData?.totalExpense || 0)}
+                        color = "bg-red-500"
+                    />
                 </div>
+
+                <div className = "grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <RecentTransactions
+                        transactions = {dashboardData?.recentTransactions}
+                        onSeeMore = {() => navigate("/expense")}
+                    />
+                    <FinanceOverview
+                    totalBalance = {dashboardData?.totalBalance || 0}
+                    totalIncome = {dashboardData?.totalIncome || 0}
+                    totalExpense = {dashboardData?.totalExpense || 0}
+                    />
+                </div>
+                
             </div>
         </DashboardLayout>
     );
