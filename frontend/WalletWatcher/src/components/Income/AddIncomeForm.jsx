@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Input from "../Inputs/Input";
 import EmojiPickerPopup from "../EmojiPickerPopup";
 
-const AddIncomeForm = ({onAddIncome}) => {
+const AddIncomeForm = ({onAddIncome, initialData = null, isEdit = false}) => {
     const [income, setIncome] = useState({
         source: "",
         amount: "",
@@ -10,7 +10,22 @@ const AddIncomeForm = ({onAddIncome}) => {
         icon: "",
     });
 
-    const handleChange = (key, value) => setIncome ({...income, [key]: value});
+    useEffect(() => {
+        if (initialData) {
+            setIncome({
+
+                source: initialData.source || "",
+                amount: initialData.amount || "",
+                date: initialData.date
+                    ? new Date(initialData.date)
+                    : new Date(),
+                icon:initialData.icon || "",
+            });
+        }
+    }, [initialData]);
+
+    const handleChange = (key, value) => 
+        setIncome((prev) => ({...prev, [key]: value}));
 
     return (
         <div>
@@ -49,11 +64,11 @@ const AddIncomeForm = ({onAddIncome}) => {
                     className = "add-btn add-btn-fill"
                     onClick = {() => onAddIncome(income)}
                 >
-                    Add Income
+                    {isEdit ? "Update Income" : "Add Income"}
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default AddIncomeForm

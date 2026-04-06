@@ -4,13 +4,15 @@ const {
     addIncome,
     getAllIncome,
     deleteIncome,
-    downloadIncomeExcel
+    downloadIncomeExcel,
+    updateIncome,
 } = require("../controllers/incomeController");
 
 const {protect} = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
+router.put("/:id", protect, updateIncome);
 router.post("/add", protect, addIncome);
 router.get("/get", protect, getAllIncome);
 router.get("/downloadexcel", protect, downloadIncomeExcel);

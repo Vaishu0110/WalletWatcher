@@ -76,3 +76,30 @@ exports.getUserInfo = async (req, res) => {
             .json ({message: "Error occured.", error: err.message});
     }
 };
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const {fullName, profileImageUrl} = req.body;
+
+        if (!fullName || !fullName.trim()) {
+            return res.status(400).json({message: "Full name is required."});
+        }
+
+        const updateUser = await User.findByIdAndUpdate(
+            req.user.id,
+            {
+                fullName: fullName.trim(),
+                profileImageUrl: profileImageUrl || "",
+            },
+            {new: true}
+        ).select("-password");
+
+        if (!updateUser) {
+            return res.status(404).json({message: "User not found. Login and try again."});
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Error updating profile", error: error.message,
+        });
+    }
+};

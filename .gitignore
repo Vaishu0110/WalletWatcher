@@ -32,7 +32,6 @@ frontend/WalletWatcher/.DS_Store
 *frontend/WalletWatcher/.sln
 *.sw?
 *frontend/WalletWatcher/.sw?
-frontend/WalletWatcher/src/utils/apiPaths.js
 frontend/WalletWatcher/bak.gitignorebak
 
 backend/.env

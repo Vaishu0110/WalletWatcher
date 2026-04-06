@@ -4,9 +4,10 @@ import {
     LuTrendingUp,
     LuTrendingDown,
     LuTrash2,
+    LuPencil,
 } from "react-icons/lu";
 
-const TransactionInfoCard = ({title, icon, date, amount, type, hideDeleteBtn, onDelete}) => {
+const TransactionInfoCard = ({title, icon, date, amount, type, hideDeleteBtn, onEdit, onDelete}) => {
     const getAmountStyles = () => 
         type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500";
     return (
@@ -30,6 +31,15 @@ const TransactionInfoCard = ({title, icon, date, amount, type, hideDeleteBtn, on
                 </div>
 
                 <div className = "flex items-center gap-2">
+                    {onEdit && (
+                        <button
+                            className = "text-gray-400 hover: text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                            onClick = {onEdit}
+                        >
+                            <LuPencil size = {18}/>
+                        </button>
+                    )}   
+                    
                     {!hideDeleteBtn && (
                         <button className = "text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                         onClick = {onDelete}>

@@ -42,6 +42,35 @@ exports.getAllIncome = async (req, res) => {
     }
 };
 
+exports.updateIncome = async(req, res) => {
+    try {
+        const {source, amount, date, icon} = req.body;
+
+        if (!source || !amount || !date) {
+            return res.status(400).json({message: "All fields are required."});
+        }
+
+        const updateIncome = await Income.findOneAndUpdate(
+            {_id: req.params.id, userId: req.user.id},
+            {
+                source,
+                amount,
+                date: new Date(date),
+                icon,
+            },
+            {new: true}
+        );
+
+        if (!updateIncome) {
+            return res.status(404).json({message: "Income entry not found"});
+        }
+
+        res.status(200).json(updateIncome);
+    } catch (error) {
+        res.status(500).json({message: "Server Error", details: error.message});
+    }
+};
+
 exports.deleteIncome = async (req, res) => {
     try {
         await Income.findByIdAndDelete(req.params.id);
