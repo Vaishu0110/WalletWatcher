@@ -58,7 +58,7 @@ const EditProfileForm = ({user, onSave}) => {
             } else {
                 toast.error("Image Uploaded but no URL was returned.");
             }
-        } catch (error) {
+        } catch (errror) {
             toast.error (
                 error.response?.data?.message || "Failed to upload image."
             );

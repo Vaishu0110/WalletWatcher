@@ -101,7 +101,7 @@ const Expense = () => {
 
         try {
             await axiosInstance.put (
-                API_PATHS.EXPENSE>UPDATE_EXPENSE(openEditExpenseModal.data._id),
+                API_PATHS.EXPENSE.UPDATE_EXPENSE(openEditExpenseModal.data._id),
                 {category, amount, date, icon}
             );
 
