@@ -9,6 +9,7 @@ const expenseRoutes = require("./routes/expenseRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(
     cors({
